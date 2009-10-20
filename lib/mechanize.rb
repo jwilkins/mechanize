@@ -73,6 +73,7 @@ class Mechanize
   attr_accessor :cert
   attr_accessor :pass
   attr_accessor :redirect_ok
+  attr_accessor :gzip_enabled
   attr_accessor :keep_alive_time
   attr_accessor :keep_alive
   attr_accessor :conditional_requests
@@ -115,6 +116,7 @@ class Mechanize
     @key            = nil # OpenSSL Private Key
     @pass           = nil # OpenSSL Password
     @redirect_ok    = true # Should we follow redirects?
+    @gzip_enabled   = true
 
     # attr_readers
     @history        = Mechanize::History.new
@@ -478,6 +480,7 @@ class Mechanize
                                                           @keep_alive_time,
                                                           @cookie_jar,
                                                           @user_agent,
+                                                          @gzip_enabled,
                                                           @request_headers
                                                           ),
                                 Chain::CustomHeaders.new,
